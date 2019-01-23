@@ -1,0 +1,988 @@
+<hr />
+
+<p>layout: default</p>
+
+<h2 id="permalinkcutesillyboysdocs">permalink: /cutesillyboys/docs</h2>
+
+<h1 id="whatthefloprestapidocumentation">WHATTHEFLOP REST API Documentation</h1>
+
+<h2 id="wtfapi">WTF API</h2>
+
+<h3 id="create">Create</h3>
+
+<ul>
+<li>description: Create a new user</li>
+
+<li>request: <code>POST /signup/</code>
+
+
+<ul>
+<li>content-type: <code>application/json</code></li>
+
+<li>body: {"username":"admin", "password":"pass4admin"}"
+
+
+<ul>
+<li>(String) username</li>
+
+<li>(String) password</li></ul>
+</li></ul>
+</li>
+
+<li>response: 200
+
+
+<ul>
+<li>body: "admin signed up."</li></ul>
+</li>
+
+<li>response: 500
+
+
+<ul>
+<li>body: server error</li></ul>
+</li>
+
+<li>response: 400
+
+
+<ul>
+<li>body: Password is missing</li>
+
+<li>body: Username is missing</li></ul>
+</li>
+
+<li>response: 401
+
+
+<ul>
+<li>body: admin username already exists</li>
+
+<li>body: The username is in an invalid format! Only alphanumeric characters!</li></ul>
+</li>
+
+<li>response: 409
+
+
+<ul>
+<li>body: admin username already exists.</li></ul>
+</li>
+</ul>
+
+<pre><code class="  language- ">$ curl -X POST
+        -H "Content-Type: application/json"
+        -d '{"username":"admin", "password":"pass4admin"}'
+        https://www.whattheflop.me/signup/
+</code></pre>
+
+<h3 id="create-1">Create</h3>
+
+<ul>
+<li>description: Signin User</li>
+
+<li>request: <code>POST /signin/</code>
+
+
+<ul>
+<li>content-type: <code>application/json</code></li>
+
+<li>body: {"username":"admin", "password":"pass4admin"}"
+
+
+<ul>
+<li>(String) username</li>
+
+<li>(String) password</li></ul>
+</li></ul>
+</li>
+
+<li>response: 200
+
+
+<ul>
+<li>body: USER-ID</li></ul>
+</li>
+
+<li>response: 500
+
+
+<ul>
+<li>body: server error</li></ul>
+</li>
+
+<li>response: 400
+
+
+<ul>
+<li>body: Password is missing</li>
+
+<li>body: Username is missing</li></ul>
+</li>
+
+<li>response: 401
+
+
+<ul>
+<li>body: Password is incorrect!</li>
+
+<li>body: admin is not a valid user!</li></ul>
+</li>
+</ul>
+
+<pre><code class="  language- ">$ curl -X POST
+        -H "Content-Type: application/json"
+        -d '{"username":"admin", "password":"pass4admin"}'
+        https://www.whattheflop.me/signin/
+</code></pre>
+
+<h3 id="create">Create</h3>
+
+<ul>
+<li>description: Create Event</li>
+
+<li>request: <code>POST /myevent/&lt;user_id&gt;/</code>
+
+
+<ul>
+<li>content-type: <code>application/json</code></li>
+
+<li>body: 
+
+
+<ul>
+<li>(Event) firstPlace</li>
+
+<li>(Event) secondPlace</li>
+
+<li>(Event) thirdPlace</li>
+
+<li>(Int) UserId </li></ul>
+</li></ul>
+</li>
+
+<li>response: 200
+
+
+<ul>
+<li>body: "hihihihihi"</li></ul>
+</li>
+
+<li>response: 500
+
+
+<ul>
+<li>body: server error</li></ul>
+</li>
+
+<li>response: 400
+
+
+<ul>
+<li>body: User ID is missing</li>
+
+<li>body: a place is missing</li></ul>
+</li>
+
+<li>response: 401
+
+
+<ul>
+<li>body: Not Authorized</li></ul>
+</li>
+</ul>
+
+<pre><code class="  language- ">$ curl -X POST
+       -H "Content-Type: application/json"
+       -d '{"firstPlace":"eventOne", "secondPlace":"eventTwo", "thirdPlace":"eventThree"}'
+       https://www.whattheflop.me/myevent/3681310/
+</code></pre>
+
+<h3 id="create">Create</h3>
+
+<ul>
+<li>description: Create Scheduled Event</li>
+
+<li>request: <code>POST /&lt;user_id&gt;/event/</code>
+
+
+<ul>
+<li>content-type: <code>application/json</code></li>
+
+<li>body: 
+
+
+<ul>
+<li>(String) title</li>
+
+<li>(String) location</li>
+
+<li>(String) description</li>
+
+<li>(String) date</li>
+
+<li>(Int) userId</li></ul>
+</li></ul>
+</li>
+
+<li>response: 200
+
+
+<ul>
+<li>body: "for wakanda"</li></ul>
+</li>
+
+<li>response: 500
+
+
+<ul>
+<li>body: server error</li></ul>
+</li>
+</ul>
+
+<pre><code class="  language- ">$ curl -X POST
+       -H "Content-Type: application/json"
+       -d '{"title":"eventName", "location":"eventLocation", "description":"eventDescription", "date":"eventDate"}'
+       https://www.whattheflop.me/3681310/event/
+</code></pre>
+
+<h3 id="create">Create</h3>
+
+<ul>
+<li>description: Create a Room</li>
+
+<li>request: <code>POST /room/</code>
+
+
+<ul>
+<li>content-type: <code>application/json</code></li>
+
+<li>body: 
+
+
+<ul>
+<li>(String) roomname</li>
+
+<li>(String) status</li></ul>
+</li></ul>
+</li>
+
+<li>response: 200
+
+
+<ul>
+<li>body: ROOM ID </li></ul>
+</li>
+
+<li>response: 500
+
+
+<ul>
+<li>body: server error</li></ul>
+</li>
+
+<li>response: 400
+
+
+<ul>
+<li>body: The roomname is missing</li>
+
+<li>body: The status is missing</li></ul>
+</li>
+</ul>
+
+<pre><code class="  language- ">$ curl -X POST
+        -H "Content-Type: application/json"
+       -d '{"roomname":"roomName", "status":"start"}'
+       https://www.whattheflop.me/room/
+</code></pre>
+
+<h3 id="create-2">Create</h3>
+
+<ul>
+<li>description: Create a Temp User</li>
+
+<li>request: <code>POST /room/&lt;room_id&gt;/user/</code>
+
+
+<ul>
+<li>content-type: <code>application/json</code></li>
+
+<li>body: 
+
+
+<ul>
+<li>(String) username</li>
+
+<li>(Int) roomId</li></ul>
+</li></ul>
+</li>
+
+<li>response: 200
+
+
+<ul>
+<li>body: Temp User ID</li></ul>
+</li>
+
+<li>response: 500
+
+
+<ul>
+<li>body: server error</li></ul>
+</li>
+
+<li>response: 400
+
+
+<ul>
+<li>body: The username is missing</li></ul>
+</li>
+
+<li>response: 401
+
+
+<ul>
+<li>body: 'The room does not exist!'</li>
+
+<li>body: 'The room has already voted! Create or join another room!'</li></ul>
+</li>
+</ul>
+
+<pre><code class="  language- ">$ curl -X POST
+       -H "Content-Type: application/json"
+       -d '{"username":"username"}'
+       https://www.whattheflop.me/room/1/user/
+</code></pre>
+
+<h3 id="create">Create</h3>
+
+<ul>
+<li>description: Create a Suggestion</li>
+
+<li>request: <code>POST /room/&lt;room_id&gt;/suggestion/</code>
+
+
+<ul>
+<li>content-type: <code>application/json</code></li>
+
+<li>body: 
+
+
+<ul>
+<li>(String) suggestion - suggestion name</li>
+
+<li>(Int) userId</li>
+
+<li>(String) suggestionJson - suggestion object json</li></ul>
+</li></ul>
+</li>
+
+<li>response: 200
+
+
+<ul>
+<li>body: suggestion: new suggestion</li></ul>
+</li>
+
+<li>response: 500
+
+
+<ul>
+<li>body: server error</li></ul>
+</li>
+
+<li>response: 400
+
+
+<ul>
+<li>body: The username is missing</li>
+
+<li>body: The suggestions is missing</li></ul>
+</li>
+
+<li>response: 409
+
+
+<ul>
+<li>body: Suggestion already exists</li></ul>
+</li>
+</ul>
+
+<pre><code class="  language- ">$ curl -X POST
+      -H "Content-Type: application/json"
+       -d '{"suggestion":"suggestion", "userId":"3681310", "suggestionJson":"{suggestion: suggestionJson}"}'
+       https://www.whattheflop.me/room/1/suggestion/
+</code></pre>
+
+<h3 id="create">Create</h3>
+
+<ul>
+<li>description: Create a Ranking for a suggestion</li>
+
+<li>request: <code>POST /room/&lt;room_id&gt;/rank/</code>
+
+
+<ul>
+<li>content-type: <code>application/json</code></li>
+
+<li>body: 
+
+
+<ul>
+<li>(String) first</li>
+
+<li>(String) second</li>
+
+<li>(String) third</li></ul>
+</li></ul>
+</li>
+
+<li>response: 200
+
+
+<ul>
+<li>body: suggestion: new suggestion</li></ul>
+</li>
+
+<li>response: 500
+
+
+<ul>
+<li>body: server error</li></ul>
+</li>
+
+<li>response: 400
+
+
+<ul>
+<li>body: ranking is missing</li></ul>
+</li>
+</ul>
+
+<pre><code class="  language- ">$ curl -X POST
+      -H "Content-Type: application/json"
+       -d '{"first":"rankFirst", "second":"rankSecond", "third":"rankThird"}'
+       https://www.whattheflop.me/room/1/rnk/
+</code></pre>
+
+<h3 id="read">Read</h3>
+
+<ul>
+<li>description: Signout User</li>
+
+<li>request: <code>GET /signout/</code></li>
+
+<li>response: 200
+
+
+<ul>
+<li>body: logout</li></ul>
+</li>
+
+<li>response: 500
+
+
+<ul>
+<li>body: server error</li></ul>
+</li>
+</ul>
+
+<pre><code class="  language- ">$ curl -X GET https://www.whattheflop.me/signout/
+</code></pre>
+
+<h3 id="read">Read</h3>
+
+<ul>
+<li>description: Get User Event for User Id</li>
+
+<li>request: <code>GET /myevent/&lt;user_id&gt;/</code></li>
+
+<li>response: 200
+
+
+<ul>
+<li>body: list of events for a user:
+
+
+<ul>
+<li>list of:
+
+
+<ul>
+<li>(Event) firstPlace</li>
+
+<li>(Event) secondPlace</li>
+
+<li>(Event) thirdPlace</li>
+
+<li>(Int) UserId </li>
+
+<li>(Int) EventId</li></ul>
+</li></ul>
+</li></ul>
+</li>
+
+<li>response: 500
+
+
+<ul>
+<li>body: server error</li></ul>
+</li>
+
+<li>response: 401
+
+
+<ul>
+<li>body: Not Authorized</li></ul>
+</li>
+</ul>
+
+<pre><code class="  language- ">$ curl -X GET
+       https://www.whattheflop.me/myevent/3681310/
+</code></pre>
+
+<h3 id="read">Read</h3>
+
+<ul>
+<li>description: Get User Scheduled Event for User Id</li>
+
+<li>request: <code>GET /&lt;user_id&gt;/event/</code></li>
+
+<li>response: 200
+
+
+<ul>
+<li>body: list of events for a user:
+
+
+<ul>
+<li>list of:
+
+
+<ul>
+<li>(String) title</li>
+
+<li>(String) location</li>
+
+<li>(String) description</li>
+
+<li>(String) date</li>
+
+<li>(Int) userId</li>
+
+<li>(Int) eventId</li></ul>
+</li></ul>
+</li></ul>
+</li>
+
+<li>response: 500
+
+
+<ul>
+<li>body: server error</li></ul>
+</li>
+
+<li>response: 401
+
+
+<ul>
+<li>body: Not Authorized</li></ul>
+</li>
+</ul>
+
+<pre><code class="  language- ">$ curl -X GET
+       https://www.whattheflop.me/3681310/event/
+</code></pre>
+
+<h3 id="read">Read</h3>
+
+<ul>
+<li>description: Get All Temp Users for a Given Room</li>
+
+<li>request: <code>GET /room/&lt;room_id&gt;/user/</code></li>
+
+<li>response: 200
+
+
+<ul>
+<li>body: list of temp usernames:
+
+
+<ul>
+<li>list of:
+
+
+<ul>
+<li>(String) usernames</li></ul>
+</li></ul>
+</li></ul>
+</li>
+
+<li>response: 500
+
+
+<ul>
+<li>body: server error</li></ul>
+</li>
+
+<li>response: 401
+
+
+<ul>
+<li>body: Room {} does not exist</li></ul>
+</li>
+</ul>
+
+<pre><code class="  language- ">$ curl -X GET
+       https://www.whattheflop.me/room/1/event/
+</code></pre>
+
+<h3 id="read">Read</h3>
+
+<ul>
+<li>description: Get a list of suggestion objects</li>
+
+<li>request: <code>GET /room/&lt;room_id&gt;/suggestion/</code></li>
+
+<li>response: 200
+
+
+<ul>
+<li>body: list of suggestions:</li>
+
+<li>list of:
+
+
+<ul>
+<li>(String) location</li>
+
+<li>(String) id</li>
+
+<li>(String) name</li></ul>
+</li></ul>
+</li>
+
+<li>response: 500
+
+
+<ul>
+<li>body: server error</li></ul>
+</li>
+</ul>
+
+<pre><code class="  language- ">$ curl -X GET
+       https://www.whattheflop.me/room/1/suggestion/
+</code></pre>
+
+<h3 id="read">Read</h3>
+
+<ul>
+<li>description: Get the status of a room</li>
+
+<li>request: <code>GET /room/&lt;room_id&gt;/status/</code></li>
+
+<li>response: 200
+
+
+<ul>
+<li>body:</li>
+
+<li>(String status)</li></ul>
+</li>
+
+<li>response: 500
+
+
+<ul>
+<li>body: server error</li></ul>
+</li>
+
+<li>response: 401
+
+
+<ul>
+<li>body: room does not exist</li></ul>
+</li>
+</ul>
+
+<pre><code class="  language- ">$ curl -X GET
+       https://www.whattheflop.me/room/1/status/
+</code></pre>
+
+<h3 id="read-1">Read</h3>
+
+<ul>
+<li>description: Get the username given a userId</li>
+
+<li>request: <code>GET /user/&lt;user_id&gt;/</code></li>
+
+<li>response: 200
+
+
+<ul>
+<li>body:</li>
+
+<li>(String) username</li></ul>
+</li>
+
+<li>response: 500
+
+
+<ul>
+<li>body: server error</li></ul>
+</li>
+
+<li>response: 401
+
+
+<ul>
+<li>body: user does not exist</li></ul>
+</li>
+</ul>
+
+<pre><code class="  language- ">$ curl -X GET
+       https://www.whattheflop.me/user/3681310/
+</code></pre>
+
+<h3 id="read-2">Read</h3>
+
+<ul>
+<li>description: Get the roomname given room id</li>
+
+<li>request: <code>GET /room/&lt;room_id&gt;/</code></li>
+
+<li>response: 200
+
+
+<ul>
+<li>body:</li>
+
+<li>(String) roomname</li></ul>
+</li>
+
+<li>response: 500
+
+
+<ul>
+<li>body: server error</li></ul>
+</li>
+
+<li>response: 401
+
+
+<ul>
+<li>body: room does not exist</li></ul>
+</li>
+</ul>
+
+<pre><code class="  language- ">$ curl -X GET
+       https://www.whattheflop.me/room/1/
+</code></pre>
+
+<h3 id="read-3">Read</h3>
+
+<ul>
+<li>description: Get Users who have not submitted suggestions</li>
+
+<li>request: <code>GET /room/&lt;room_id&gt;/submitted/</code></li>
+
+<li>response: 200
+
+
+<ul>
+<li>body: list of users</li>
+
+<li>(list) list of usernames</li></ul>
+</li>
+
+<li>response: 500
+
+
+<ul>
+<li>body: server error</li></ul>
+</li>
+</ul>
+
+<pre><code class="  language- ">$ curl -X GET
+       https://www.whattheflop.me/room/1/submitted/
+</code></pre>
+
+<h3 id="read-4">Read</h3>
+
+<ul>
+<li>description: Get Google suggestions</li>
+
+<li>request: <code>GET /room/search/&lt;suggestion&gt;/</code></li>
+
+<li>response: 200
+
+
+<ul>
+<li>body: Google Place Object</li>
+
+<li>(Object) Google Place object</li></ul>
+</li>
+
+<li>response: 500
+
+
+<ul>
+<li>body: server error</li></ul>
+</li>
+</ul>
+
+<pre><code class="  language- ">$ curl -X GET
+       https://www.whattheflop.me/search/Toronto
+</code></pre>
+
+<h3 id="read-5">Read</h3>
+
+<ul>
+<li>description: Calculates the winner of a room</li>
+
+<li>request: <code>GET /room/&lt;room_id&gt;/winner/</code></li>
+
+<li>response: 200
+
+
+<ul>
+<li>body: list of objects</li>
+
+<li>list of:
+
+
+<ul>
+<li>(Object) Event object - first place</li>
+
+<li>(Object) Event object - second place</li>
+
+<li>(Object) Event object - third place</li></ul>
+</li></ul>
+</li>
+
+<li>response: 500
+
+
+<ul>
+<li>body: server error</li></ul>
+</li>
+</ul>
+
+<pre><code class="  language- ">$ curl -X GET
+       https://www.whattheflop.me/room/1/winner/
+</code></pre>
+
+<h3 id="update">UPDATE</h3>
+
+<ul>
+<li>description: Changes the status of a temp user</li>
+
+<li>request: `PATCH /room/user/<user_id>/status/'</li>
+
+<li>body:
+
+
+<ul>
+<li>(int) userId</li>
+
+<li>(String) status</li></ul>
+</li>
+
+<li>response: 200
+
+
+<ul>
+<li>body: {} changed the status</li></ul>
+</li>
+
+<li>response: 500
+
+
+<ul>
+<li>body: server error</li></ul>
+</li>
+</ul>
+
+<pre><code class="  language- ">$ curl -X PATCH
+       -H "Content-Type: application/json"
+       -d '{"status":"start"}'
+       https://www.whattheflop.me/room/user/1/status'
+</code></pre>
+
+<h3 id="update-1">UPDATE</h3>
+
+<ul>
+<li>description: Changes the status of a room</li>
+
+<li>request: `PATCH /room/<room_id>/status/'</li>
+
+<li>body:
+
+
+<ul>
+<li>(int) roomId</li>
+
+<li>(String) status</li></ul>
+</li>
+
+<li>response: 200
+
+
+<ul>
+<li>body: {} changed the status</li></ul>
+</li>
+
+<li>response: 500
+
+
+<ul>
+<li>body: server error</li></ul>
+</li>
+</ul>
+
+<pre><code class="  language- ">$ curl -X PATCH
+       -H "Content-Type: application/json"
+       -d '{"status":"start"}'
+       https://www.whattheflop.me/room/1/status'
+</code></pre>
+
+<h3 id="delete">DELETE</h3>
+
+<ul>
+<li>description: Delete a scheduled event</li>
+
+<li>request: `DELETE /event/<id>/'</li>
+
+<li>body:
+
+
+<ul>
+<li>(int) eventId</li></ul>
+</li>
+
+<li>response: 200
+
+
+<ul>
+<li>body: DELETE SCHEDULED EVENT</li></ul>
+</li>
+
+<li>response: 500
+
+
+<ul>
+<li>body: server error</li></ul>
+</li>
+
+<li>response: 401
+
+
+<ul>
+<li>body: "Event does not exist"</li></ul>
+</li>
+</ul>
+
+<pre><code class="  language- ">$ curl -X DELETE
+       -H "Content-Type: application/json"
+       https://www.whattheflop.me/event/1/'
+</code></pre>

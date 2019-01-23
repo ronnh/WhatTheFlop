@@ -1,0 +1,71 @@
+body {
+    background-color: #FAFAFA;
+    font-family: 'Open Sans Light';
+    color: #424242;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+#container {
+  font-family: 'Open Sans SB', 'Open Sans Regular', 'Open Sans Light', sans-serif;
+}
+
+@font-face{
+    font-family: "Open Sans SB";
+    src: url("../media/fonts/OpenSans-Semibold.ttf");
+}
+
+@font-face{
+    font-family: "Open Sans Regular";
+    src: url("../media/fonts/OpenSans-Regular.ttf");
+}
+
+@font-face{
+    font-family: "Open Sans Light";
+    src: url("../media/fonts/OpenSans-Light.ttf");
+}
+
+h1{
+  text-align: center;
+  font-family: 'Open Sans SB';
+}
+
+#logo{
+  width: 150px;
+}
+
+.center {
+  z-index: 1;
+  text-align: center;
+}
+
+.form{
+  margin: auto;
+  max-width: 80%;
+  width: 60%;
+  display:flex;
+  flex-direction: column;
+  border-bottom: blue;
+}
+
+.form .input{
+ font-size: 10px;
+ border-radius:10px;
+ padding:5px 10px 5px 10px;
+}
+
+.btn{
+  border-radius:10px;
+  text-align:center;
+  font-size: 8px;
+  color: #3C3D3F;
+  background: #F4F4F4;
+  border: 1px #B5B5B5 solid;
+  padding: 7px 15px 7px 15px;
+  margin: auto;
+}
+
+.btn:hover {
+  background: #0390A9;
+  color: #ffffff;
+}
